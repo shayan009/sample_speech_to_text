@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#ffffff</color>
+    <color name="select_card_premium">#7AFFFFFF</color>
+    <color name="color_unselected_Day">#464646</color>
+    <color name="color_selected_DayMOnth">#6FC938</color>
+    <color name="black">#000000</color>
+    <color name="light_black">#484848</color>
+    <color name="chor_timeline_unselected_grey">#DFDFDF</color>
+    <color name="light_grey">#ECECEC</color>
+    <color name="light_grey_text">#C5C5C5</color>
+    <color name="medium_light_grey">#B2B2B2</color>
+    <color name="pink">#F6579F</color>
+    <color name="red">#D42121</color>
+    <color name="orange">#FCCB72</color>
+    <color name="blue">#58A5EE</color>
+    <color name="color_skip">#707070</color>
+    <color name="color_green">#38CF0C</color>
+    <color name="nav_text_color" >#313131</color>
+    <color name="nav_icon_color" >#4B4B4B</color>
+    <color name="sweet_dialog_bg_color">#FFFFFF</color>
+    <color name="blue_btn_bg_color">#E63636</color>
+    <color name="blue_btn_bg_pressed_color">#E63636</color>
+    <color name="add_chore_selection_bg">#F7F7F7</color>
+    <color name="review_chore_bg_clr">#F3F3F3</color>
+    <color name="review_chore_text_bg_clr">#E0E0E0</color>
+    <color name="chor_pending_grey">#616161</color>
+    <color name="blue_premium_item_text">#3B9FDC</color>
+    <color name="blue_premium_bottom_text">#3EE1C4</color>
+    <color name="chart1Color">#3FEC94</color>
+    <color name="unearnedTime">#FEB733</color>
+    <color name="chart2Color">#18C3FC</color>
+    <color name="chart3Color">#CA26FB</color>
+    <color name="chart4Color">#F14A46</color>
+    <color name="indoorColor">#BE1F1B</color>
+    <color name="screenColor">#15C96D</color>
+    <color name="unearnedScreenColor">#BB831E</color>
+    <color name="parentColor">#0098CB</color>
+    <color name="outdoorColor">#A20FCE</color>
+    <color name="pause_text">#829F71</color>
+    <color name="pause_tint">#CEEFBA</color>
+
+    <color name="play_text">#B38080</color>
+    <color name="play_tint">#F2D1D1</color>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loading"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_background">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_15dp"
+        android:text="@string/the_speech_does_not_exists_in_the_dictionary"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:fontFamily="@font/sfprotext_regular" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/_12dp"
+        android:layout_marginTop="@dimen/_20dp"
+        android:backgroundTint="@color/color_green"
+        android:fontFamily="@font/mclaren_regular"
+        android:gravity="center"
+        android:text="@string/ok"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:cornerRadius="@dimen/_12dp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

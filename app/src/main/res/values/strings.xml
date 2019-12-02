@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TextToSpeechConverter</string>
+    <string name="ok">Ok</string>
+    <string name="the_speech_does_not_exists_in_the_dictionary">The Speech does not exists in the dictionary</string>
+</resources>
