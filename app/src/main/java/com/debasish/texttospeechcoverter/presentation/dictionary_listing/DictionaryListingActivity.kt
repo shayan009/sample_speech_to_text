@@ -1,5 +1,6 @@
 package com.debasish.texttospeechcoverter.presentation.dictionary_listing
 
+import android.annotation.SuppressLint
 import com.debasish.texttospeechcoverter.presentation.dictionary_listing.DictionaryAdapter
 import com.debasish.texttospeechcoverter.presentation.dictionary_listing.DictionaryItem
 import com.debasish.texttospeechcoverter.presentation.dictionary_listing.DictionaryListingViewModel
@@ -10,6 +11,7 @@ import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -43,15 +45,14 @@ class DictionaryListingActivity : AppCompatActivity() {
         weatherViewModel = ViewModelProviders.of(this,viewModelFactory).get(DictionaryListingViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dictionary_list);
         binding.model=weatherViewModel
-
         getItemDecorator(R.dimen._10dp)?.let { rvDictionary.addItemDecoration(it) }
+        binding.model?.getAdapter()?.let { dictionaryAdapter=it }
         weatherViewModel?.getDictionaryListing("interview/dictionary-v2.json")
             ?.subscribe({ t1 ->
-                if(t1!=null){
-                    Log.d("dictionary",t1.dictionary.toString())
-                    binding.model?.setDictionaryListAdapter(t1.dictionary.sortedBy {it.frequency.toInt()}.reversed().toMutableList())
+                    Log.d("dictionary",t1?.dictionary.toString())
+                t1?.dictionary?.sortedBy {it.frequency.toInt()}?.reversed()?.toMutableList()?.let {
+                    binding.model?.setDictionaryListAdapter(it)
                 }
-
             },{
                 it.printStackTrace()
             })?.let { compositeDisposable.add(it) }
@@ -65,6 +66,7 @@ class DictionaryListingActivity : AppCompatActivity() {
         super.onDestroy()
         compositeDisposable.clear()
     }
+    @SuppressLint("LongLogTag")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         var isVoiceSame=false
@@ -91,13 +93,10 @@ class DictionaryListingActivity : AppCompatActivity() {
                   break
             }
             if(isVoiceSame){
-
-                binding.model?.getAdapter()?.dictionaryList?.forEach { it.isHighlighted=false }
-                binding.model?.getAdapter()?.dictionaryList?.get(currentIndex)?.frequency= (dictionaryAdapter.dictionaryList?.get(currentIndex)?.frequency?.toInt()?.plus(
-                    1
-                )).toString()
-                binding.model?.getAdapter()?.dictionaryList?.get(currentIndex)?.isHighlighted=true
-                binding.model?.getAdapter()?.notifyDataSetChanged()
+                dictionaryAdapter.dictionaryList?.forEach { it.isHighlighted=false }
+                dictionaryAdapter.dictionaryList?.get(currentIndex)?.frequency= (dictionaryAdapter.dictionaryList?.get(currentIndex)?.frequency?.toInt()?.plus(1)).toString()
+                dictionaryAdapter.dictionaryList?.get(currentIndex)?.isHighlighted=true
+                dictionaryAdapter.notifyDataSetChanged()
             }else{
                 val alertDialog= CustomAlertDialog()
                 alertDialog.show(supportFragmentManager,"CustomAlertDialog")
@@ -106,7 +105,7 @@ class DictionaryListingActivity : AppCompatActivity() {
     }
 
 
-    fun startVoiceRecognitionActivity() {
+    private fun startVoiceRecognitionActivity() {
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(
             RecognizerIntent.EXTRA_LANGUAGE_MODEL,
